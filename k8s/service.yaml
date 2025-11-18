@@ -1,0 +1,13 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-service
+  namespace: default
+spec:
+  selector:
+    app: dotnet-app
+  ports:
+    - protocol: TCP
+      port: 80      # Dışarıdan erişilecek port
+      targetPort: 8080 # Container'ın içindeki port
+  type: LoadBalancer # Minikube'de 'minikube tunnel' ile IP alır

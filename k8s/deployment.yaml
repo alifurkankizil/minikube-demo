@@ -1,0 +1,27 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-app
+  namespace: default # İstersen 'dev' veya 'staging' yapabilirsin
+spec:
+  replicas: 2 # 2 tane pod (kopya) çalışsın
+  selector:
+    matchLabels:
+      app: dotnet-app
+  template:
+    metadata:
+      labels:
+        app: dotnet-app
+    spec:
+      containers:
+        - name: dotnet-web
+          # DİKKAT: Buraya kendi Docker Hub kullanıcı adını yazmalısın
+          # Örn: docker.io/kullaniciadi/my-dotnet-app:latest
+          image: mydockerhubuser/my-dotnet-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
