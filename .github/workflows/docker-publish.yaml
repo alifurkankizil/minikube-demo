@@ -45,7 +45,7 @@ jobs:
         run: |
           # Deployment dosyasındaki image: satırını bul ve yeni tag ile değiştir
           # sed komutu Linux'ta metin değiştirmek için kullanılır
-          sed -i "s|image: .*|image: dockerhubkullaniciadin/my-dotnet-app:${{ steps.vars.outputs.sha_short }}|g" k8s/deployment.yaml
+          sed -i "s|image: .*|image: alifurkankizil/my-dotnet-app:${{ steps.vars.outputs.sha_short }}|g" k8s/deployment.yaml
           
           # Değişikliği ekrana bas (kontrol için)
           cat k8s/deployment.yaml
