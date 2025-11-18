@@ -17,7 +17,7 @@ spec:
         - name: dotnet-web
           # DİKKAT: Buraya kendi Docker Hub kullanıcı adını yazmalısın
           # Örn: docker.io/kullaniciadi/my-dotnet-app:latest
-          image: mydockerhubuser/my-dotnet-app:latest
+          image: alifurkankizil/my-dotnet-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
