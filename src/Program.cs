@@ -36,11 +36,12 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapGet("/", () => 
+app.MapGet("/", (ILogger<Program> logger) => 
 {
     var hostName = System.Environment.MachineName;
+    logger.LogInformation("Anasayfa istegi karsilandi. Pod: {PodName} Zaman: {Time}", hostName, DateTime.Now);
     return Results.Ok(new { 
-        Message = "Selam! Bu uygulama Kubernetes uzerinde calisiyor.", 
+        Message = "Hello! Bu uygulama Kubernetes uzerinde calisiyor.", 
         PodName = hostName,
         Version = "v1.0.0"
     });
